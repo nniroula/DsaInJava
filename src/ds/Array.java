@@ -84,6 +84,19 @@ class ArrayImplementation{
         arr[index] = element;
         return arr;
     }
+    
+    /* 5. delete an element, need to shift other elements to the left */
+    public String[] deleteElement(String[] arr) {
+    	int index = 2;
+    	int currentArraySize = Integer.MIN_VALUE;
+    	for(int i = index; i < arr.length - 1; i++) {
+    			arr[i] = arr[i + 1];
+        		currentArraySize = i;
+    	}
+    	//arr[arr.length - 1] = " ";
+    	System.out.println("Current Array size = " + currentArraySize);
+    	return arr;
+    }
 }
 
 
@@ -118,5 +131,9 @@ public class Array {
         arrFour[2] = 5;
         arrFour[3] = 9;
        System.out.println(Arrays.toString(arrayImpl.isertElementAtGivenIndex(arrFour)));
+       
+       //delete element
+       String[] arrayFive = {"Java", "C++", "Py", "JS", " "};
+       System.out.println(Arrays.toString(arrayImpl.deleteElement(arrayFive)));
 	}
 }
