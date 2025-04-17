@@ -9,7 +9,7 @@ class ArrayImplementation{
 		return arrayOne;
 	}
 	
-		
+	/* 1. */
 	public void addOrCreateElement() {
 		int[] arr = arr();
 		System.out.println(Arrays.toString(arr)); // returns default values of [0, 0, 0, 0, 0]
@@ -38,7 +38,7 @@ class ArrayImplementation{
 		return arr;
 	}
 	
-	/* remove an element and shift all elements afterwards towards left 
+	/* 2. remove an element and shift all elements afterwards towards left 
 	 * Time complexity = O(n)
 	 * Space complexity = O(1)
 	 * */
@@ -52,7 +52,7 @@ class ArrayImplementation{
 		return arr;
 	}
 	
-	/* access an element  based on the index */
+	/* 3. access an element  based on the index */
 	public void accessElement(Double[] arr, double targetValue) {
 		
 		//8. access an element at the front => time complexity = O(1) and space complexity = O(1)
@@ -70,6 +70,20 @@ class ArrayImplementation{
 			}
 		}
 	}
+
+    /*4. Insert an element at  a given index */
+    public int[] isertElementAtGivenIndex(int[] arr){
+        // at index 2, insert 85 => means shift any elem after index 2 to right
+        int index = 2;
+        int element = 85;
+        //shift one element to the right. To do so, i should start at last index value minus 2
+        for(int i = arr.length - 2; i >= index; i--){
+            arr[i + 1] = arr[i];
+        }
+        // insert an element
+        arr[index] = element;
+        return arr;
+    }
 }
 
 
@@ -96,5 +110,13 @@ public class Array {
 		Double[] arrThree = {1.0, 2.0, 2.8, 3.6};
 		double targetValue = 2.8;
 		arrayImpl.accessElement(arrThree, targetValue);
+
+        // insert element at given index
+        int[] arrFour = new int[5];
+        arrFour[0] = 2;
+        arrFour[1] = 3;
+        arrFour[2] = 5;
+        arrFour[3] = 9;
+       System.out.println(Arrays.toString(arrayImpl.isertElementAtGivenIndex(arrFour)));
 	}
 }
