@@ -1,6 +1,7 @@
 package ds;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 class ArrayImplementation{
 	//1 create an array => time complexity = O(1) & space complexity = O(n) coz allocating n spaces in memory
@@ -93,10 +94,82 @@ class ArrayImplementation{
     			arr[i] = arr[i + 1];
         		currentArraySize = i;
     	}
-    	//arr[arr.length - 1] = " ";
     	System.out.println("Current Array size = " + currentArraySize);
     	return arr;
     }
+    
+    /* 6. merge two arrays */
+    public int[] mergeTwoArrays(int[] arrOne, int[] arrTwo) {
+    	int[] mergedArray = new int[arrOne.length + arrTwo.length];
+    	for(int i = 0; i < arrOne.length; i++) {
+    		mergedArray[i] = arrOne[i];
+    	}
+    	
+    	for(int j = 0; j < arrTwo.length; j++) {
+    		mergedArray[arrOne.length + j] = arrTwo[j];
+    	}
+    	
+    	return mergedArray;
+    }
+    
+    /*7. sum of all the elements in an array */
+    public int getSumOfAllElems() {
+    	// get user input
+    	Scanner scanner = new Scanner(System.in);
+    	//System.out.println("Enter your elements: ");
+    	int userInputSize = scanner.nextInt();
+    	
+    	int[] arr = new int[userInputSize];
+    	
+    	// put user input elements in an array
+    	for(int i = 0; i < arr.length; i++) {
+    		arr[i] = scanner.nextInt();
+    	}
+    	
+    	// calculate the sum
+    	int sum = 0;
+    	for(int num: arr) {
+    		sum = sum + num;
+    	}
+    	
+    	return sum;
+    }
+    
+    /* check if a number is found in an array */
+    public String isElemPresent() {
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.println("IS elem present ...");
+    	System.out.println("Enter a number: ");
+		int N = scanner.nextInt();
+		int X = scanner.nextInt();
+		
+		System.out.println("N is " + N + "," + "X is " + X);
+		
+		boolean found = false;
+		
+		int[] arr = new int[N];
+		
+		for(int i = 0; i < N; i++){
+		    arr[i] = scanner.nextInt();
+		}
+		
+		System.out.println(Arrays.toString(arr));
+		
+		for(int num: arr){
+			System.out.println(num);
+			System.out.println(X);
+		    if(num == X){
+		        found = true;
+		        break;
+		    }
+		}
+		if(found) {
+			return "YES";
+		}else {
+			return "Not Found";
+		}
+	}
+    
 }
 
 
@@ -135,5 +208,17 @@ public class Array {
        //delete element
        String[] arrayFive = {"Java", "C++", "Py", "JS", " "};
        System.out.println(Arrays.toString(arrayImpl.deleteElement(arrayFive)));
+	
+       // merge two arrays
+       int[] arraySix = {1, 2, 3};
+       int[] arraySeven = {4, 5, 6};
+       System.out.println(Arrays.toString(arrayImpl.mergeTwoArrays(arraySix, arraySeven)));
+	
+       // get sum of all the elements in an array
+      // System.out.println(arrayImpl.getSumOfAllElems());
+       
+       // check if an element is present in an array
+       //arrayImpl.isElemPresent();
+      System.out.println(arrayImpl.isElemPresent());
 	}
 }
